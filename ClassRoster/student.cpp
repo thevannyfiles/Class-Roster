@@ -1,69 +1,54 @@
-#include <iostream>, <string>
+#include <iostream>
+#include <string>
 #include "student.h"
 using namespace std; 
 
-//mutators 
-void Student::SetStudentID(string studentID) {
-	this->studentID = studentID;
-}
-void Student::SetFirstName(string firstName) {
-	this->firstName = firstName;
-}
-void Student::SetLastName(string lastName) {
-	this->lastName = lastName;
-}
-void Student::SetEmail(string emailAddress) {
-	email = emailAddress;
-}
-void Student::SetAge(int age) {
-	yearsOfAge = age;
-}
-void Student::setDaysInCourse(int dayInCourse[]) {
-	for (int i = 0; i < 3; i++) {
-		courseDays[i] = dayInCourse[i];
-	}
-}
-void Student::SetDegreeProgram(DegreeProgram degreeProgram) {
-	this->degreeProgram = degreeProgram; 
-}
-
-//accesors 
-string Student::getStudentID() {return studentID; }
-string Student::getFirstName() { return firstName; }
-string Student::getLastName() {return lastName;}
-string Student::getEmail() { return email; }
-int Student::getAge() { return yearsOfAge; }
-int* Student::getDaysInCourse() { return courseDays; }
-DegreeProgram Student::getDegreeProgram() { return degreeProgram; }
-
 //constructor
-Student::Student(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse[], DegreeProgram degreeProgram) {
-	this->studentID = studentID;
-	this->firstName = firstName;
-	this->lastName = lastName;
+Student::Student(string ID, string fName, string lName, string emailAddress, int yearsOfAge, array<int, 3> days, DegreeProgram nameOfDegree) {
+	studentID = ID;
+	firstName = fName;
+	lastName = lName;
 	email = emailAddress;
-	yearsOfAge = age;
-	for (int i = 0; i < 3; i++) {
-		courseDays[i] = daysInCourse[i];
-	}
-	this->degreeProgram = degreeProgram;
+	yearsOfAge = yearsOfAge;
+	daysInCourse = days;
+	degreeProgram = nameOfDegree;
 }
+
+// getters - accessors
+string Student::getStudentID() {return studentID; }
+string Student::getFirstName() {return firstName; }
+string Student::getLastName() {return lastName;}
+string Student::getEmail() {return email; }
+int Student::getAge() {return age; }
+array<int, 3> Student::getDaysInCourse() {return daysInCourse; }
+DegreeProgram Student::getDegreeProgram() {return degreeProgram; }
+
+//setters - mutators
+void Student::setStudentID(string ID) { studentID = ID; }
+void Student::setFirstName(string fName) { firstName = fName; }
+void Student::setLastName(string lName) { lastName = lName; }
+void Student::setEmail(string emailAddress) { email = emailAddress; }
+void Student::setAge(int yearsOfAge) {age = yearsOfAge; }
+void Student::setDaysInCourse(array<int, 3> days) {daysInCourse = days;}
+void Student::setDegreeProgram(DegreeProgram nameOfDegree) { degreeProgram = nameOfDegree; }
 
 // print function 
-void Student::Print() {
+void Student::print() {
 	cout << studentID << "\t"
 		<< firstName << "\t"
 		<< lastName << "\t"
-		<< yearsOfAge << "\t"
-		<< "{" << courseDays[0] << "," << courseDays[1] << "," << courseDays[2] << "}";
+		<< age << "\t"
+		<< "{" << daysInCourse[0] << "," << daysInCourse[1] << "," << daysInCourse[2] << "}";
 	switch (degreeProgram) {
-	case SECURITY:
-		cout << "SECURITY";
-	case NETWORK:
-		cout << "NETWORK";
-	case SOFTWARE:
-		cout << "SOFTWARE";
-		break;
+	    case SECURITY:
+			cout << "SECURITY";
+			break;
+		case NETWORK:
+			cout << "NETWORK";
+			break;
+	    case SOFTWARE:
+			cout << "SOFTWARE";
+			break;
 	}
 	cout << endl;
 	}

@@ -17,35 +17,44 @@ int main()
 	// course details 
 	cout << "Course Title: Scripting and Programming - Applications - C867" << endl;
 	cout << "Programming Language: C++" << endl;
-	cout << "WGU Student ID: 011956424" << endl; 
-	cout << "Name: Vanessa Okosun" << endl; 
+	cout << "WGU Student ID: 011956424" << endl;
+	cout << "Name: Vanessa Okosun" << endl;
 
 	//instance of roster class 
 	Roster classRoster;
 
-	//parsing and adding each student's data 
-	for (int i = 0; i < 5; ++i) {
-		classRoster.parse(studentData[i]); //parse and add each student to roster
-	}
+    // Parse each entry and add to the roster
+    for (int i = 0; i < 5; i++) {
+        classRoster.parse(studentData[i]);
+    }
 
-	// pseudo-code 
+    // Demonstrate the functionality
+    cout << "Displaying all students:" << endl;
+    classRoster.printAll();
 
-	classRoster.printAll(); //print all students 
+    cout << "Displaying invalid emails:" << endl;
+    classRoster.printInvalidEmails();
 
-	classRoster.printInvalidEmails(); //print invalid emails 
-	
-	//print average days in course for each student
-	for (int i = 0; i < 5; ++i) {
-		classRoster.printAverageDaysInCourse(classRoster.classRosterArray[i]->getStudentID());
-	}
+    cout << "Displaying average days in course:" << endl;
+    for (int i = 0; i <= 4; i++) { // 5 students
+        classRoster.printAverageDaysInCourse(classRoster.getStude(i));
+    }
 
-	classRoster.printByDegreeProgram(SOFTWARE); // Print students by degree program
+    cout << "Displaying students in the SOFTWARE degree program:" << endl;
+    classRoster.printByDegreeProgram(SOFTWARE);
 
-	classRoster.remove("A3"); // Remove a student and print the roster again
-	classRoster.printAll();
+    cout << "\nRemoving A3:" << endl;
+    classRoster.remove("A3");
+    classRoster.printAll();
 
-	// Attempt to remove the same student again
-	classRoster.remove("A3");
-	
-	return 0; 
+    cout << "\nRemoving A3 again:" << endl;
+    classRoster.remove("A3");
+
+    // Call the destructor explicitly (optional, for clarity)
+    classRoster.~Roster();
+
+    return 0;
+}
+
+	return 0;
 }

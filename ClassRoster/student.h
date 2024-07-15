@@ -1,39 +1,42 @@
 #pragma once
-#include <string> <array>
+#include <string> 
+#include <array>
 #include "degree.h"
+using namespace std;
 
-//creation of the student class 
+//creation of the student class with all attributes
 class Student {
-public: 
-	// mutators 
-	void SetStudentID(string ID);
-	void SetFirstName(string firstName);
-	void SetLastName(string lastName);
-	void SetEmail(string emailAddress);
-	void SetAge(int age);
-	void setDaysInCourse(int daysInCourse[]); 
-	void SetDegreeProgram(DegreeProgram degreeProgram); 
-	void Print(); //print 
-
-	//accessors 
-	string getStudentID();
-	string getFirstName();
-	string getLastName();
-	string getEmail();
-	int getAge();
-	int* getDaysInCourse();
-	DegreeProgram getDegreeProgram(); 
-
-	//constructor : not default 
-	Student(string studentId, string firstName, string lastName, string email, int age, int daysInCourse[], DegreeProgram degreeProgram);
-
 private:
 	string studentID;
 	string firstName;
 	string lastName;
 	string email;
-	int yearsOfAge;
-	int courseDays[3];
-	DegreeProgram degreeProgram; 
-};
+	int age;
+	array<int, 3> daysInCourse;
+	DegreeProgram degreeProgram;
 
+public:
+	//constructor : not default 
+	Student(string studentId, string firstName, string lastName, string email, int age, array<int, 3> daysInCourse, DegreeProgram degreeProgram);
+
+	//accessors (getters)
+	string getStudentID();
+	string getFirstName();
+	string getLastName();
+	string getEmail();
+	int getAge();
+	array<int, 3> getDaysInCourse();
+	DegreeProgram getDegreeProgram();
+
+	// mutators (setters)
+	void setStudentID(string ID);
+	void setFirstName(string firstName);
+	void setLastName(string lastName);
+	void setEmail(string emailAddress);
+	void setAge(int age);
+	void setDaysInCourse(array<int, 3> daysInCourse);
+	void setDegreeProgram(DegreeProgram degreeProgram);
+
+	void print(); //print student details
+
+};
