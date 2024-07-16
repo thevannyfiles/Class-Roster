@@ -4,14 +4,14 @@
 using namespace std; 
 
 //constructor
-Student::Student(string ID, string fName, string lName, string emailAddress, int yearsOfAge, array<int, 3> days, DegreeProgram nameOfDegree) {
-	studentID = ID;
-	firstName = fName;
-	lastName = lName;
-	email = emailAddress;
-	yearsOfAge = yearsOfAge;
-	daysInCourse = days;
-	degreeProgram = nameOfDegree;
+Student::Student(string studentID, string firstName, string lastName, string email, int age, array<int, 3> days, DegreeProgram degreeProgram) {
+	this->studentID = studentID;
+	this->firstName = firstName;
+	this->lastName = lastName;
+	this->email = email;
+	this->age = age;
+	this->daysInCourse = days;
+	this->degreeProgram = degreeProgram;
 }
 
 // getters - accessors
@@ -24,21 +24,21 @@ array<int, 3> Student::getDaysInCourse() {return daysInCourse; }
 DegreeProgram Student::getDegreeProgram() {return degreeProgram; }
 
 //setters - mutators
-void Student::setStudentID(string ID) { studentID = ID; }
-void Student::setFirstName(string fName) { firstName = fName; }
-void Student::setLastName(string lName) { lastName = lName; }
-void Student::setEmail(string emailAddress) { email = emailAddress; }
-void Student::setAge(int yearsOfAge) {age = yearsOfAge; }
-void Student::setDaysInCourse(array<int, 3> days) {daysInCourse = days;}
-void Student::setDegreeProgram(DegreeProgram nameOfDegree) { degreeProgram = nameOfDegree; }
+void Student::setStudentID(string studentID) { this->studentID = studentID; }
+void Student::setFirstName(string firstName) { this->firstName = firstName; }
+void Student::setLastName(string lastName) { this->lastName = lastName; }
+void Student::setEmail(string email) { this->email = email; }
+void Student::setAge(int age) {this->age = age; }
+void Student::setDaysInCourse(array<int, 3> daysInCourse) { this->daysInCourse = daysInCourse;}
+void Student::setDegreeProgram(DegreeProgram degreeProgram) { this->degreeProgram = degreeProgram; }
 
 // print function 
 void Student::print() {
 	cout << studentID << "\t"
 		<< firstName << "\t"
 		<< lastName << "\t"
-		<< age << "\t"
-		<< "{" << daysInCourse[0] << "," << daysInCourse[1] << "," << daysInCourse[2] << "}";
+		<< "\t" << age << "\t"
+		<< "\t" << "{" << daysInCourse[0] << "," << daysInCourse[1] << "," << daysInCourse[2] << "}" << "\t";
 	switch (degreeProgram) {
 	    case SECURITY:
 			cout << "SECURITY";

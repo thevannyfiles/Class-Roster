@@ -16,11 +16,11 @@ Roster::Roster() {
 }
 
 //adds a student to the class roster array 
-void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
-	int daysInCourse[] = { daysInCourse1, daysInCourse2, daysInCourse3 };
+void Roster::add(string studentID, string firstName, string lastName, string email, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
+	array<int,3> daysInCourse = { daysInCourse1, daysInCourse2, daysInCourse3 };
 	for (int i = 0; i < 5; ++i) {
 		if (classRosterArray[i] == nullptr) {
-			classRosterArray[i] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, degreeProgram);
+			classRosterArray[i] = new Student(studentID, firstName, lastName, email, age, daysInCourse, degreeProgram);
 			break;
 		}
 	}
@@ -42,7 +42,7 @@ void Roster::remove(string studentID) {
         }
     }
     if (!found) {
-        cout << "Student with ID: " << studentID << " was not found." << endl;
+        cout << "The student with the ID: " << studentID << " was not found." << endl;
     }
 }
 
@@ -81,8 +81,53 @@ void Roster::printAverageDaysInCourse(string studentID) {
     for (int i = 0; i < 5; ++i) {
         if (classRosterArray[i] != nullptr && classRosterArray[i]->getStudentID() == studentID) {
             array <int,3> days = classRosterArray[i]->getDaysInCourse();
-            cout << "Student ID: " << studentID << ", Average days in course: " << (days[0] + days[1] + days[2]) / 3 << endl;
+            cout << "Student ID: " << studentID << ", average days in course: " << (days[0] + days[1] + days[2]) / 3 << endl;
         }
     }
 }
 
+// Helper function to convert string to int
+int stringToInt(const string& str) {
+    int num = 0;
+    for (char c : str) {
+        if (isdigit(c)) {
+            num = num * 10 + (c - '0');
+        }
+    }
+    return num;
+}
+
+// Function to split a string by a delimiter
+string getNextToken(string& str, char delimiter) {
+    size_t pos = str.find(delimiter);
+    string token = str.substr(0, pos);
+    str.erase(0, pos + 1);
+    return token;
+}
+
+// Function to parse a data row and add a student to the classRosterArray
+void Roster::parse(string row) {
+    string studentID = getNextToken(row, ',');
+    string firstName = getNextToken(row, ',');
+    string lastName = getNextToken(row, ',');
+    string emailAddress = getNextToken(row, ',');
+    int age = stringToInt(getNextToken(row, ','));
+    int daysInCourse1 = stringToInt(getNextToken(row, ','));
+    int daysInCourse2 = stringToInt(getNextToken(row, ','));
+    int daysInCourse3 = stringToInt(getNextToken(row, ','));
+    string degreeStr = getNextToken(row, ',');
+
+    DegreeProgram degreeProgram;
+    if (degreeStr == "SECURITY") {
+        degreeProgram = SECURITY;
+    }
+    else if (degreeStr == "NETWORK") {
+        degreeProgram = NETWORK;
+    }
+    else if (degreeStr == "SOFTWARE") {
+        degreeProgram = SOFTWARE;
+    }
+
+    // Add the student to the roster
+    add(studentID, firstName, lastName, emailAddress, age, daysInCourse1, daysInCourse2, daysInCourse3, degreeProgram);
+}

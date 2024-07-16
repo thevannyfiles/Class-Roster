@@ -1,5 +1,7 @@
-#include <iostream>, <string> 
+#include <iostream>
+#include <string> 
 #include "roster.h"
+
 using namespace std;
 
 int main()
@@ -28,33 +30,48 @@ int main()
         classRoster.parse(studentData[i]);
     }
 
-    // Demonstrate the functionality
+    cout << endl;
+
+    //print all students 
     cout << "Displaying all students:" << endl;
     classRoster.printAll();
 
+    cout << endl;
+
+    //print invalid emails 
     cout << "Displaying invalid emails:" << endl;
+    cout << endl;
     classRoster.printInvalidEmails();
 
-    cout << "Displaying average days in course:" << endl;
-    for (int i = 0; i <= 4; i++) { // 5 students
-        classRoster.printAverageDaysInCourse(classRoster.getStude(i));
+    cout << endl;
+
+    //print average day in course for each students
+    for (int i = 0; i < 5; ++i) { // 5 students
+        if (classRoster.classRosterArray[i] != nullptr) {
+            classRoster.printAverageDaysInCourse(classRoster.classRosterArray[i]->getStudentID());
+        }
     }
 
-    cout << "Displaying students in the SOFTWARE degree program:" << endl;
+    cout << endl;
+
+    // print students by degree program (SOFTWARE)
+    cout << "Showing students in the degree program: SOFTWARE" << endl;
     classRoster.printByDegreeProgram(SOFTWARE);
 
+
+    //remove student by ID and print the rest of students 
     cout << "\nRemoving A3:" << endl;
+    cout << endl;
     classRoster.remove("A3");
     classRoster.printAll();
 
+
+    //attempt to remove same student 
     cout << "\nRemoving A3 again:" << endl;
+    cout << endl;
     classRoster.remove("A3");
 
-    // Call the destructor explicitly (optional, for clarity)
-    classRoster.~Roster();
+    cout << "DONE.";
 
     return 0;
-}
-
-	return 0;
 }

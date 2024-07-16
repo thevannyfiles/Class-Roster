@@ -4,10 +4,9 @@ using namespace std;
 
 
 class Roster {
-private: 
-	Student* classRosterArray[5]; //array of pointers 
 
 public:
+	Student* classRosterArray[5]; //array of pointers 
 	 //constructor
 	Roster();
 	

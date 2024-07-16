@@ -17,7 +17,7 @@ private:
 
 public:
 	//constructor : not default 
-	Student(string studentId, string firstName, string lastName, string email, int age, array<int, 3> daysInCourse, DegreeProgram degreeProgram);
+	Student(string studentID, string firstName, string lastName, string email, int age, array<int, 3> daysInCourse, DegreeProgram degreeProgram);
 
 	//accessors (getters)
 	string getStudentID();
