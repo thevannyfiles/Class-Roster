@@ -3,13 +3,11 @@
 using namespace std;
 
 
-//creation of the roster class including an array of pointers to hold student data table 
 class Roster {
 private: 
-	Student* classRosterArray[5]; 
-	int lastIndex; //index to track last student added 
+	Student* classRosterArray[5]; //array of pointers 
 
- public:
+public:
 	 //constructor
 	Roster();
 	
