@@ -12,12 +12,12 @@ private:
 	string lastName;
 	string email;
 	int age;
-	array<int, 3> daysInCourse;
+	int daysInCourse[3];
 	DegreeProgram degreeProgram;
 
 public:
 	//constructor : not default 
-	Student(string studentID, string firstName, string lastName, string email, int age, array<int, 3> daysInCourse, DegreeProgram degreeProgram);
+	Student(string studentID, string firstName, string lastName, string email, int age, int daysInCourse[3], DegreeProgram degreeProgram);
 
 	//accessors (getters)
 	string getStudentID();
@@ -25,7 +25,7 @@ public:
 	string getLastName();
 	string getEmail();
 	int getAge();
-	array<int, 3> getDaysInCourse();
+	int* getDaysInCourse();
 	DegreeProgram getDegreeProgram();
 
 	// mutators (setters)
@@ -34,7 +34,7 @@ public:
 	void setLastName(string lastName);
 	void setEmail(string emailAddress);
 	void setAge(int age);
-	void setDaysInCourse(array<int, 3> daysInCourse);
+	void setDaysInCourse(int daysInCourse[3]);
 	void setDegreeProgram(DegreeProgram degreeProgram);
 
 	void print(); //print student details

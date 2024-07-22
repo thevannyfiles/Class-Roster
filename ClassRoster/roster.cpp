@@ -17,7 +17,7 @@ Roster::Roster() {
 
 //adds a student to the class roster array 
 void Roster::add(string studentID, string firstName, string lastName, string email, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
-	array<int,3> daysInCourse = { daysInCourse1, daysInCourse2, daysInCourse3 };
+	int daysInCourse[3] = {daysInCourse1, daysInCourse2, daysInCourse3};
 	for (int i = 0; i < 5; ++i) {
 		if (classRosterArray[i] == nullptr) {
 			classRosterArray[i] = new Student(studentID, firstName, lastName, email, age, daysInCourse, degreeProgram);
@@ -80,7 +80,7 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 void Roster::printAverageDaysInCourse(string studentID) {
     for (int i = 0; i < 5; ++i) {
         if (classRosterArray[i] != nullptr && classRosterArray[i]->getStudentID() == studentID) {
-            array <int,3> days = classRosterArray[i]->getDaysInCourse();
+            int* days = classRosterArray[i]->getDaysInCourse();
             cout << "Student ID: " << studentID << ", average days in course: " << (days[0] + days[1] + days[2]) / 3 << endl;
         }
     }

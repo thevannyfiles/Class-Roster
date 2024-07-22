@@ -4,13 +4,16 @@
 using namespace std; 
 
 //constructor
-Student::Student(string studentID, string firstName, string lastName, string email, int age, array<int, 3> days, DegreeProgram degreeProgram) {
+Student::Student(string studentID, string firstName, string lastName, string email, int age, int* daysInCourse, DegreeProgram degreeProgram) {
 	this->studentID = studentID;
 	this->firstName = firstName;
 	this->lastName = lastName;
 	this->email = email;
 	this->age = age;
-	this->daysInCourse = days;
+	//this->daysInCourse = daysInCourse;
+	daysInCourse[0] = daysInCourse[0];
+	daysInCourse[1] = daysInCourse[1];
+	daysInCourse[2] = daysInCourse[2];
 	this->degreeProgram = degreeProgram;
 }
 
@@ -20,7 +23,7 @@ string Student::getFirstName() {return firstName; }
 string Student::getLastName() {return lastName;}
 string Student::getEmail() {return email; }
 int Student::getAge() {return age; }
-array<int, 3> Student::getDaysInCourse() {return daysInCourse; }
+int* Student::getDaysInCourse() { return daysInCourse; }
 DegreeProgram Student::getDegreeProgram() {return degreeProgram; }
 
 //setters - mutators
@@ -29,7 +32,10 @@ void Student::setFirstName(string firstName) { this->firstName = firstName; }
 void Student::setLastName(string lastName) { this->lastName = lastName; }
 void Student::setEmail(string email) { this->email = email; }
 void Student::setAge(int age) {this->age = age; }
-void Student::setDaysInCourse(array<int, 3> daysInCourse) { this->daysInCourse = daysInCourse;}
+void Student::setDaysInCourse(int daysInCourse[3]) {
+	this->daysInCourse[0] = daysInCourse[0];
+	this->daysInCourse[1] = daysInCourse[1];
+	this->daysInCourse[2] = daysInCourse[2];}
 void Student::setDegreeProgram(DegreeProgram degreeProgram) { this->degreeProgram = degreeProgram; }
 
 // print function 
